@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="demo.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,700');
+    .title {
+        font-family: "Raleway", sans-serif;
+        width: 90%;
+        margin: 5px auto;
+        font-size: 15px;
+    }
+    
+    .plr-vid {
+        overflow: hidden;
+        height: 250px;
+        position: relative;
+        margin: auto;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    
+    .plr-vid-yt {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 230px;
+    }
+    
+    .plr-vid a {
+        color: initial;
+        text-decoration: initial;
+    }
+    
+    .plr-vid * {
+        transition: 1s all;
+    }
+    
+    .plr-vid .plr-vid-img-wrapper {
+        position: relative;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .plr-vid .plr-vid-img-wrapper > div {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: .25s;
+        background-size: cover !important;
+    }
+    
+    .plr-vid .plr-vid-img-wrapper {
+        transition: .3s;
+        position: absolute;
+    }
+    
+    .plr-vid__content__title {
+        box-sizing: border-box;
+        padding: 10px 0;
+        color: #fff;
+        font-weight: 600;
+        clear: none;
+        margin-left: 15px;
+        font-size: 18px;
+        line-height: 23px;
+        -webkit-font-smoothing: antialiased;
+        position: absolute;
+        z-index: 1;
+    }
+    
+    .plr-vid__content__banner {
+        font-size: 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        padding: 0 5px;
+        background-color: rgb(255, 102, 0);
+        color: white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        text-align: right;
+    }
+    
+    .plr-vid-play {
+        max-width: 60%;
+        max-height: 60%;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate3d(-50%, -50%, 0);
+        opacity: 0.7;
+    }
+    
+    .polar-deck-open .polar-deck-container {
+        overflow-y: hidden;
+    }
+    
+    .plr-rgif {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+        box-sizing: border-box;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    
+    .plr-rgif:hover .plr-rr__content__title {
+        text-decoration: underline;
+    }
+    
+    .plr-rgif a {
+        color: initial;
+        text-decoration: initial;
+    }
+    
+    .plr-rgif a:hover {
+        text-decoration: none;
+    }
+    
+    .plr-rgif .plr-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 180px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .plr-rgif .plr-img-wrapper > div:first-child {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: .25s;
+        background-size: cover !important;
+    }
+    
+    .plr-rgif .plr-img-wrapper {
+        transition: .3s;
+    }
+    
+    .plr-rgif__content {
+        bottom: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .plr-rgif__content__title {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        padding: 10px 20px;
+        padding-bottom: 5px;
+        font-size: 27px;
+        line-height: 31px;
+        background: #fff;
+        font-weight: bold;
+    }
+    
+    .plr-rgif__content__banner {
+        font-family: news-gothic-std,"Helvetica Neue", Helvetica,Arial,sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-left: 0;
+        padding: 0 20px;
+        /* position: relative; */
+        background: rgb(0, 195, 195);
+        color: white;
+        /* border-top: 5px solid rgb(0,195,195); */
+        /* border-bottom: 5px solid rgb(0,195,195); */
+        text-align: right;
+        line-height: 20px;
+    }
+    
+    .plr-play {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background: #fff;
+        border-radius: 50%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0px;
+    }
+    
+    .plr-play .plr-arrow-triangle {
+        background: #1f1f1f;
+        position: absolute;
+        left: 23px;
+        top: 23px;
+        text-align: left;
+        transform: rotate(-90deg) skewX(-30deg) scale(1, 0.866);
+        -webkit-transform: rotate(-90deg) skewX(-30deg) scale(1, 0.866);
+        -moz-transform: rotate(-90deg) skewX(-30deg) scale(1, 0.866);
+    }
+    
+    .plr-play .plr-arrow-triangle::before,
+    .plr-play .plr-arrow-triangle::after {
+        content: " ";
+        position: absolute;
+        background-color: inherit;
+    }
+    
+    .plr-play .plr-arrow-triangle,
+    .plr-play .plr-arrow-triangle:before,
+    .plr-play .plr-arrow-triangle:after {
+        width: 17px;
+        height: 17px;
+        border-top-right-radius: 30%;
+    }
+    
+    .plr-play .plr-arrow-triangle::before {
+        transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707) translate(0, 50%);
+        -webkit-transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707) translate(0, -50%);
+        -moz-transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707) translate(, -50%);
+    }
+    
+    .plr-play .plr-arrow-triangle::after {
+        transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%);
+        -webkit-transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%);
+        -moz-transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%);
+    }
+
+
+
+
+    .plr-fb-vid-wrapper{
+        margin-bottom: 15px;
+    }
+
+    .plr-fb-vid {
+        position: relative;
+    }
+    .plr-fb-overlay{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+    }
+    .plr-fb-overlay-bg{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        opacity: 0.75;
+    }
+    .fb-video{
+        opacity: 0;
+    }
+    .plr-fb-play-btn{
+        max-width: 20%;
+        max-height: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%,-50%,0);
+    }
+    .plr-fb-vid-wrapper .plr-vid__content__banner{
+      position: relative;
+      box-sizing: border-box;
+      padding: 0 15px;
+      background-color: rgb(102, 0, 102);
+    }
+    .plr-fb-button{
+      background-image: url(http://elements-ins.com/epic-insurance/images/Facebook-clear-icon_1.png);
+      width: 35px;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 35px;
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="placeholder"></div>
+    </div>
+    <div class="article">
+        <div class="title">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        <div class="thumbnail">
+            <div class="placeholder"></div>
+        </div>
+        <div class="content">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <h5 class="title">Embed Youtube Video Using Youtube API:</h5>
+            <div class="plr-vid">
+                <div class="plr-vid__content__title">Top Tips for Taking Better Photos</div>
+                <div class="plr-vid-img-wrapper">
+                    <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/creative2.jpeg) no-repeat center center;  z-index: -1;"></div>
+                    <img class="plr-vid-play" src="/assets/play.png"></img>
+                </div>
+                <div class="plr-vid-yt">
+                    <iframe class="plr-vid-iframe" id="plr-vid-iframe" height="100%" width="100%" src="https://www.youtube.com/embed/T62NjDicHcU?rel=0&vq=hd720&enablejsapi=1" frameborder="0" enablejsapi="true" allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="plr-vid__content__banner">Sponsored by Samsung</div>
+            </div>
+            <script>
+            $(document).ready(function() {
+                //append enablejsapi if not already in the iframe src
+                ytsrc = $(".plr-vid-yt iframe").attr("src");
+                if (ytsrc.indexOf("enablejsapi=1") == -1) {
+                    $(".plr-vid-yt iframe").attr("src", ytsrc + "&enablejsapi=1");
+                }
+
+                //get rid of autoplay
+                ytsrc = $(".plr-vid-yt iframe").attr("src");
+                if (ytsrc.indexOf("autoplay=1") != -1) {
+                    $(".plr-vid-yt iframe").attr("src",
+                        ytsrc.replace("&autoplay=1", ""));
+                }
+
+                //append youtube iframe API to head
+                //for some reason this doesnt work if i append this with jquery at the bottom of the script
+                //hence, i have to append it in the onRender function
+                //shitty but what can you do :(
+                var tag = document.createElement('script');
+                tag.id = 'yt-iframe-api';
+                tag.src = 'https://www.youtube.com/iframe_api';
+                document.getElementsByTagName('head')[0].appendChild(tag);
+
+                //create the player and attach event listener
+                //NOTE: any functions used by youtube API MUST BE GLOBAL IN ORDER TO WORK
+                //hence the window.on... = function() syntax
+                var player;
+                window.onYouTubeIframeAPIReady = function() {
+                    player = new YT.Player('plr-vid-iframe', {
+                        events: {
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+
+                    console.log("Youtube Iframe API ready")
+                }
+                window.onPlayerStateChange = function(e) {
+                    if (e.data == 1) { //video is playing
+                        $(".plr-vid-yt").css("opacity", 1);
+                        $(".plr-vid__content__title").css("opacity", 0);
+                    } else if (e.data == 0) { //video has ended
+                        $(".plr-vid-yt").css("opacity", 0);
+                        $(".plr-vid__content__title").css("opacity", 1);
+                    }
+                }
+            });
+            </script>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <h5 class="title">Video Lightbox:</h5>
+            <div class="plr-rgif">
+                <a onClick="openModal()">
+                    <div class="plr-img-wrapper">
+                        <div style="background: url('/assets/creative3.gif') no-repeat center center;"></div>
+                        <span class="plr-play">
+                                <div class="plr-arrow-triangle"></div>
+                                </span>
+                    </div>
+                    <div class="plr-rgif__content">
+                        <div class="plr-rgif__content__title">How To Take Good Instagram Photos</div>
+                        <div class="plr-rgif__content__banner">Sponsored by Samsung</div>
+                    </div>
+                </a>
+            </div>
+            <script>
+                
+                function openModal(){
+                    $(".polar-deck-backdrop").addClass("polar-fade polar-in");
+                    $(".polar-deck-container").addClass("polar-fade polar-in");
+                    $("body").addClass("polar-deck-open");
+                }
+
+                function closeModal(){
+                    $(".polar-deck-backdrop").removeClass("polar-in");
+                    $(".polar-deck-container").removeClass("polar-in");
+                    setTimeout(
+                        function() {
+                            $(".polar-deck-backdrop").removeClass("polar-fade");
+                            $(".polar-deck-container").removeClass("polar-fade");
+                            $("body").removeClass("polar-deck-open");
+                        },300);
+                }
+            </script>
+            <!-- lightbox -->
+            <div class="polar-deck-backdrop"></div>
+            <div class="polar-deck-container" tabindex="-1" role="dialog" aria-labelledby="polar-deck-title">
+                <div class="polar-deck-dialog" role="document">
+                    <div class="polar-deck-content">
+                        <section class="polar-deck-header">
+                            <!-- Is hidden by CSS but required by ARIA standards -->
+                            <h5 class="polar-deck-title">A MediaVoice Deck Experience</h5>
+                            <div class="polar-deck-sponsor-info">
+                                <h3 class="polar-deck-sponsored-by">Sponsored By</h3>
+                                <img class="polar-deck-sponsor-logo" src="/assets/logo.png" alt="Samsung" title="Samsung">
+                            </div>
+                            <button type="button" class="polar-deck-close-btn polar-btn" onClick="closeModal()">X</button>
+                        </section>
+                        <section class="polar-deck-body">
+                          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/T62NjDicHcU?rel=0&amp;autoplay=1" frameborder="0" scrolling="no" style="overflow:hidden; position:absolute;" allowfullscreen=""></iframe>
+                        </section>
+                        <section class="polar-deck-footer">
+                            <ul class="polar-deck-share-btns">
+                                <li class="facebook">
+                                    <a class="polar-share-btn" href="https://facebook.com/sharer.php?u=https%3A%2F%2Fyoutu.be%2FT62NjDicHcU" target="_blank" data-share-type="facebook">
+                                        <svg id="Blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.45 50.45">
+                                            <title>Share on Facebook</title>
+                                            <rect id="Blue-2" data-name="Blue" width="50.45" height="50.45" rx="2.78" ry="2.78" style="fill:#3b5998"></rect>
+                                            <path id="f" d="M-111.86,95.22V75.68h6.56l1-7.61h-7.54V63.21c0-2.2.61-3.71,3.77-3.71h4V52.69a54,54,0,0,0-5.87-.3c-5.81,0-9.79,3.55-9.79,10.06v5.61h-6.57v7.61h6.57V95.22h7.86Z" transform="translate(146.67 -44.77)" style="fill:#fff"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="twitter">
+                                    <a class="polar-share-btn" href="https://twitter.com/intent/tweet?text=How+To+Take+Good+Instagram+Photos&amp;url=https%3A%2F%2Fyoutu.be%2FT62NjDicHcU" data-share-type="twitter">
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.35 40.92">
+                                            <title>Share on Twitter</title>
+                                            <path d="M340.73,93.77a20.65,20.65,0,0,1-5.93,1.63,10.36,10.36,0,0,0,4.54-5.72,20.68,20.68,0,0,1-6.56,2.51,10.34,10.34,0,0,0-17.6,9.42,29.33,29.33,0,0,1-21.29-10.79,10.34,10.34,0,0,0,3.2,13.79,10.29,10.29,0,0,1-4.68-1.29s0,0.09,0,.13a10.34,10.34,0,0,0,8.29,10.13,10.36,10.36,0,0,1-4.67.18,10.34,10.34,0,0,0,9.65,7.17,20.73,20.73,0,0,1-12.83,4.42,21,21,0,0,1-2.46-.14,29.24,29.24,0,0,0,15.83,4.64c19,0,29.39-15.74,29.39-29.39q0-.67,0-1.34A21,21,0,0,0,340.73,93.77Z" transform="translate(-290.38 -88.93)" style="fill:#55acee"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="email">
+                                    <a class="polar-share-btn" href="mailto:?subject=How%20To%20Take%20Good%20Instagram%20Photos&amp;body=%0A%0Ahttps%3A%2F%2Fyoutu.be%2FT62NjDicHcU" data-share-type="email">
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16">
+                                            <title>Share via Email</title>
+                                            <g id="miu">
+                                                <g id="Artboard-1">
+                                                    <path id="common-email-envelope-mail-glyph" d="M22.29,20H1.71L9,12.67l3,2.26,3-2.27ZM23,19.29V6.51h0l-7.24,5.54Zm-22,0V6.51l7.24,5.54L1,19.3H1Zm22-14V4H1V5.25l11,8.43Z" transform="translate(-1 -4)"></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="polar-learn-more-btn polar-btn" href="https://youtu.be/T62NjDicHcU">Learn More</a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <style>
+                @import url(https://fonts.googleapis.com/css?family=Gruppo);
+
+                .polar-deck-open .polar-deck-container {
+                    overflow-y: hidden;
+                }
+                
+                .polar-deck-container, .polar-deck-backdrop{
+                    opacity: 0;
+                }
+                .polar-deck-open {
+                    overflow: hidden
+                }
+                
+                .polar-fade {
+                    opacity: 0
+                }
+                
+                .polar-in {
+                    opacity: 1;
+                }
+                
+                .polar-btn {
+                    display: inline-block;
+                    margin: 0;
+                    text-align: center;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    white-space: nowrap;
+                    padding: 6px 12px;
+                    font-size: 14px;
+                    line-height: 1.4em;
+                    border-radius: 4px;
+                    box-shadow: none;
+                    transition: background-color .3s ease-out
+                }
+                
+                .polar-btn:focus,
+                .polar-btn:hover {
+                    background-color: #ccc
+                }
+                
+                .polar-deck-backdrop {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: #000;
+                    z-index: -1;
+                    -webkit-transition: opacity .3s ease-out;
+                    -o-transition: opacity .3s ease-out;
+                    transition: opacity .3s ease-out
+                }
+                
+                .polar-deck-backdrop.polar-in {
+                    opacity: .5
+                }
+                
+                .polar-deck-open .polar-deck-backdrop {
+                    z-index: 9999999 !important;
+                }
+                
+                .polar-deck-container {
+                    overflow: hidden;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    -webkit-overflow-scrolling: touch;
+                    outline: 0;
+                    z-index: -1
+                }
+                
+                .polar-deck-open .polar-deck-container {
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    z-index: 9999999 !important;
+                }
+                
+                .polar-deck-dialog {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    -webkit-transition: -webkit-transform .3s ease-out, opacity .5s ease-in;
+                    -o-transition: -o-transform .3s ease-out, opacity .5s ease-in;
+                    transition: transform .3s ease-out, opacity .5s ease-in;
+                    -webkit-transform: translate3d(0, -25%, 0);
+                    -ms-transform: translate3d(0, -25%, 0);
+                    -o-transform: translate3d(0, -25%, 0);
+                    transform: translate3d(0, -25%, 0)
+                }
+                
+                .polar-in .polar-deck-dialog {
+                    -webkit-transform: translate(0, 0);
+                    -ms-transform: translate(0, 0);
+                    -o-transform: translate(0, 0);
+                    transform: translate(0, 0)
+                }
+                
+                .polar-deck-content {
+                    position: relative;
+                    height: 100%;
+                    background-color: #fff;
+                    border-color: rgba(0, 0, 0, .2);
+                    background-clip: padding-box;
+                    outline: 0;
+                    display: -moz-box;
+                    display: -ms-flexbox;
+                    display: -webkit-flex;
+                    display: flex;
+                    -webkit-flex-direction: column;
+                    -ms-flex-direction: column;
+                    flex-direction: column;
+                    flex-flow: column;
+                    border-top-left-radius: 1em;
+                    border-top-right-radius: 1em;
+                    border-bottom-left-radius: 1em;
+                    border-bottom-right-radius: 1em;
+                    font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    border: none
+                }
+                
+                .polar-deck-header {
+                    padding: 15px;
+                    -moz-box-flex: none;
+                    -webkit-flex: none;
+                    -ms-flex: none;
+                    flex: none;
+                    background-color: #1f1f1f;
+                    border-bottom: 1px solid #1f1f1f;
+                    border-top-left-radius: .5em;
+                    border-top-right-radius: .5em;
+                    position: relative;
+                    float: left;
+                    overflow: hidden
+                }
+                
+                .polar-deck-title {
+                    display: none
+                }
+                
+                .polar-deck-close-btn {
+                    position: absolute;
+                    font-family: Gruppo, cursive;
+                    line-height: 0;
+                    font-size: 30px;
+                    border: none;
+                    text-transform: lowercase;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    color: #d4414a;
+                    background: 0 0;
+                    right: 20px;
+                    top: 15px;
+                    text-align: center;
+                    font-weight: 400;
+                    transition: all .1s ease-out;
+                    letter-spacing: 1px
+                }
+                
+                .polar-deck-close-btn:hover {
+                    opacity: 1;
+                    background-color: #1f1f1f
+                }
+                
+                .polar-deck-sponsor-info {
+                    height: 32px;
+                    text-align: left
+                }
+                
+                .polar-deck-sponsored-by {
+                    margin: 0;
+                    color: #888;
+                    width: 98%;
+                    display: inline-block;
+                    text-transform: uppercase;
+                    position: absolute;
+                    top: 10px;
+                    left: 15px;
+                    font-weight: 500;
+                    font-size: 8px;
+                    font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif
+                }
+                
+                .polar-deck-sponsor-logo {
+                    min-height: 22px;
+                    max-height: 30px;
+                    margin-top: 0;
+                    position: absolute;
+                    bottom: 10px
+                }
+                
+                .polar-deck-body {
+                    position: relative;
+                    -moz-box-flex: auto;
+                    -webkit-flex: auto;
+                    -ms-flex: auto;
+                    flex: auto;
+                    padding: 0
+                }
+                
+                .polar-deck-frame {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    padding: 0
+                }
+                
+                .polar-deck-frame-loading {
+                    visibility: hidden
+                }
+                
+                .polar-deck-footer {
+                    -moz-box-flex: none;
+                    -webkit-flex: none;
+                    -ms-flex: none;
+                    flex: none;
+                    padding: 10px;
+                    border: none;
+                    background-color: #1f1f1f;
+                    border-top: 1px solid #1f1f1f;
+                    border-bottom-left-radius: .5em;
+                    border-bottom-right-radius: .5em
+                }
+                
+                .polar-deck-share-btns {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                    float: left;
+                    margin-left: 3px;
+                    margin-top: 5px
+                }
+                
+                .polar-deck-share-btns li {
+                    float: left
+                }
+                
+                .polar-deck-share-btns li a {
+                    width: 22px;
+                    height: 22px
+                }
+                
+                .polar-deck-share-btns svg {
+                    width: 22px;
+                    height: 22px
+                }
+                
+                .polar-deck-share-btns svg:hover {
+                    opacity: .6
+                }
+                
+                .polar-deck-share-btns li+li {
+                    margin-left: 20px
+                }
+                
+                .polar-deck-share-btns .email {
+                    -webkit-filter: invert(1);
+                    filter: invert(1)
+                }
+                
+                .polar-learn-more-btn {
+                    float: right;
+                    margin: 0;
+                    text-decoration: none;
+                    letter-spacing: .5px;
+                    background-color: #03a9f4;
+                    color: #fff
+                }
+                
+                .polar-deck-footer:after,
+                .polar-deck-footer:before,
+                .polar-deck-share-btns:after,
+                .polar-deck-share-btns:before,
+                .polar-deck-sponsor-info:after,
+                .polar-deck-sponsor-info:before {
+                    content: " ";
+                    display: table
+                }
+                
+                .polar-deck-footer:after,
+                .polar-deck-share-btns:after,
+                .polar-deck-sponsor-info:after {
+                    clear: both
+                }
+                
+                @media(min-width:768px) {
+                    .polar-deck-dialog {
+                        width: 60%;
+                        margin: 30px auto;
+                        height: 90%
+                    }
+                    .polar-deck-content {
+                        border-radius: 1.1em;
+                        height: 90%;
+                        -moz-box-flex: none;
+                        -webkit-flex: none;
+                        -ms-flex: none;
+                        flex: none
+                    }
+                    .polar-deck-footer {
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px
+                    }
+                }
+                
+                @media screen\0 {
+                    .polar-deck-header {
+                        padding: 15px;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                        background-color: #EFEFEF;
+                        border-bottom: 1px solid #c3c3c3
+                    }
+                    .polar-deck-content {
+                        position: relative;
+                        background-color: #fff;
+                        border: 1px solid #999;
+                        border-color: rgba(0, 0, 0, .2);
+                        background-clip: padding-box;
+                        outline: 0;
+                        height: 500px
+                    }
+                    .polar-deck-body {
+                        padding: 15px;
+                        position: relative;
+                        height: 400px
+                    }
+                    .polar-deck-frame {
+                        width: 100%;
+                        height: 100%;
+                        border: none
+                    }
+                    .polar-deck-footer {
+                        padding: 15px;
+                        background-color: #EFEFEF;
+                        border-top: 1px solid #c3c3c3;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px
+                    }
+                }
+            </style>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+
+            <h5 class="title">Embed Facebook Video Using Facebook API:</h5>
+            <div class="plr-fb-vid-wrapper">
+                <div class="plr-fb-vid">
+                    <div class="plr-fb-overlay">
+                        <div class="plr-vid__content__title">5 Tips to Taking Great Photos </div>
+                        <div class="plr-fb-overlay-bg" style="background-image:url(/assets/creative4.jpg);">
+                        </div>
+                        <img src="/assets/play2.png" class="plr-fb-play-btn"></img>
+                        <div class="plr-fb-button"></div>
+                    </div>
+                    <div class="fb-video" data-href="https://www.facebook.com/wave3news/videos/10155505050543686/" data-width="500" data-allowfullscreen="true" data-show-captions="true">
+                    </div>
+                </div>
+                <div class="plr-vid__content__banner">Sponsored by WAVE 3 News</div>
+            </div>
+            <script>
+                $(document).ready(function() { 
+
+                    //function to run when facebook sdk loads
+                    window.fbAsyncInit = function() {
+                      //initialize api
+                      FB.init({
+                        appId      : '1208600702593427',
+                        xfbml      : true,
+                        version    : 'v2.5'
+                      });
+
+                      console.log("facebook sdk loaded")
+                      //find video
+                      FB.Event.subscribe('xfbml.ready', function(msg) {
+                        if (msg.type === 'video') {
+
+                          console.log("facebook video found")
+
+                          var facebook_vid = msg.instance;
+                          console.log(msg)
+
+                          //add event listener to play event
+                          facebook_vid.subscribe('startedPlaying', function(e) {
+                            console.log("user hath clicked on FB video, video has started playing")
+                            $(".fb-video").css("opacity", 1);
+                            $(".plr-fb-overlay").css("opacity", 0);
+                            data.analytics.trackPrimaryClick(); // count playing a video as an ad click
+                          });
+                        }
+                      });
+                    }
+
+                    console.log(window.fbAsyncInit);
+
+                    //load the facebook sdk
+                    (function(d, s, id){
+                     var js, fjs = d.getElementsByTagName(s)[0];
+                     if (d.getElementById(id)) {return;}
+                     js = d.createElement(s); js.id = id;
+                     js.src = "//connect.facebook.net/en_US/sdk.js";
+                     fjs.parentNode.insertBefore(js, fjs);
+                   }(document, 'script', 'facebook-jssdk'));
+                });
+            </script>
+
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        <div class="footer">
+            <div class="suggestion">
+                <div class="left">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+            <div class="suggestion">
+                <div class="left">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+            <div class="suggestion">
+                <div class="left">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

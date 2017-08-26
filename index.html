@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Polar Designs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="index.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+
+<body>
+
+    <div class="row" style="margin-bottom: 0px;">
+        <div class="left">
+            <div class="menu">
+            <div class="intro">
+                            <h3> Sponsored Content Formats</h3>
+        <p> During my time at Polar, I designed and developed a variety of mobile native ad formats, which were sold to two major publishers to use in their ad campaigns. Here is a showcase of some of my designs. </p>
+        </div>
+                <div onClick="loadDemo(this, 'Parallax.html' )" class="menu_option active">
+                    <div class="menu_title">Parallax Formats</div>
+                </div>
+                <div onClick="loadDemo(this, 'FlatFullWidth.html' )" class="menu_option">
+                    <div class="menu_title">Flat Full Width</div>
+                </div>
+                <div onClick="loadDemo(this, 'Videos.html' )" class="menu_option">
+                    <div class="menu_title">Video Formats</div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <image id="phone_template" src="phone_template.png"></image>
+            <div id="screen_bg"></div>
+            <iframe id="screen" src="Parallax.html">
+            </iframe>
+        </div>
+    </div>
+</body>
+
+</html>

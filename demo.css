@@ -1,0 +1,61 @@
+body{
+	height: 100%;
+	width: 100%;
+	background: #fff;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+
+.placeholder{
+	background-color: #dddddd;
+	margin: 5px auto;
+}
+
+.header .placeholder{
+	height: 50px;
+	width: 100%;
+	margin-top: 0;
+}	
+
+.title .placeholder{
+	height: 20px;
+	width: 90%;
+}
+
+.thumbnail .placeholder{
+	width: 80% !important;
+	height: 150px !important;
+}
+
+.content .placeholder{
+	width: 90%;
+	height: 12px;
+}
+
+.footer{
+    width: 90%;
+    margin: auto;
+}
+
+.suggestion{
+	height: 60px;
+}
+
+.left{
+	width: 30%;
+}
+
+.right{
+	width: 70%;
+}
+
+.left .placeholder{
+	width: 100%%;
+	height: 45px;
+}
+
+.right .placeholder{
+	width: 90%;
+	height: 10px;
+	margin: 5px auto;
+}

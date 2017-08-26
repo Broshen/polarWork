@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="demo.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,700');
+    .title {
+        font-family: "Raleway", sans-serif;
+        width: 90%;
+        margin: 5px auto;
+        font-size: 15px;
+    }
+    
+    .plr-sti-header {
+        background-color: rgb(204, 0, 0);
+        font-size: 12px;
+        color: white;
+        font-family: Roboto, sans-serif;
+        text-align: center
+    }
+    
+    .plr-sti-adWrapper {
+        height: 100vh;
+        position: relative;
+        min-width: 100%;
+        margin-bottom: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .plr-sti-adBackground-img {
+        position: fixed;
+        max-width: none;
+        max-height: none;
+        left: 50%;
+        top: 0;
+        z-index: -2;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        -moz-transform: translate3d(-50%, 0, 0);
+        -ms-transform: translate3d(-50%, 0, 0);
+        -o-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    .plr-sti-adContent {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        clip: rect(auto auto auto auto);
+    }
+    
+    .plr-sti-adBackgroundContent {
+        position: fixed;
+        top: 50vh;
+        left: auto;
+        z-index: -1;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+    }
+    
+    .plr-sti-foregroundContent {
+        position: relative;
+        height: 100%;
+    }
+    
+    .plr-sti-clickthrough {
+        position: relative;
+        color: white !important;
+        background-color: rgba(204, 0, 0, 0.5);
+        margin: 20px;
+        padding: 5px 20px;
+        display: inline-block;
+        font-size: 1em;
+        text-decoration: none;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .plr-sti-sponsor {
+        color: white;
+        padding: 5px;
+        margin: 0 20px;
+        max-width: 90%;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+    }
+    
+    .plr-sti-title {
+        text-align: left;
+        color: white !important;
+        text-transform: capitalize;
+        font-weight: bolder;
+        position: relative;
+        font-size: 2.5em;
+        line-height: 1em;
+        width: 90%;
+        margin: 0px auto;
+        padding-top: 20px;
+    }
+    
+    .plr-str-header {
+        background-color: rgb(0, 195, 195);
+        font-size: 12px;
+        color: white;
+        font-family: Roboto, sans-serif;
+        text-align: center
+    }
+    
+    .plr-str-adWrapper {
+        height: 300px;
+        position: relative;
+        min-width: 100vw;
+        margin-left: -15px;
+        margin-bottom: 30px;
+    }
+    
+    .plr-str-adBackground-img {
+        position: fixed;
+        max-width: none;
+        max-height: none;
+        left: 50%;
+        top: 0;
+        z-index: -2;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        -moz-transform: translate3d(-50%, 0, 0);
+        -ms-transform: translate3d(-50%, 0, 0);
+        -o-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    .plr-str-adContent {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        clip: rect(auto auto auto auto);
+    }
+    
+    .plr-str-adBackgroundContent {
+        position: fixed;
+        top: 50vh;
+        left: auto;
+        z-index: -1;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+    }
+    
+    .plr-str-foregroundContent {
+        top: 90%;
+        transform: translateY(-100%);
+        position: relative;
+    }
+    
+    .plr-str-clickthrough {
+        position: relative;
+        color: white !important;
+        background-color: rgba(0, 195, 195, 0.5);
+        margin: 20px auto !important;
+        padding: 5px 20px;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1em;
+        text-decoration: none;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .plr-str-sponsor {
+        color: white;
+        padding: 5px;
+        margin: 0 auto;
+        max-width: 90%;
+        text-align: center;
+    }
+    
+    .plr-str-title {   
+        text-align: center;
+        color: white !important;
+        text-transform: capitalize;
+        position: relative;
+        font-weight: bolder;
+        font-size: 2.5em;
+        line-height: 1em;
+        width: 80%;
+        padding-bottom: 20px;
+        margin: 0 auto !important;
+    }
+    
+    .plr-stp-adWrapper {
+        position: relative;
+        min-width: 100vw;
+        margin-bottom: 15px;
+        font-family: Arial, sans-serif;
+    }
+    
+    .plr-stp-bg-img {
+        position: fixed;
+        top: 0;
+        max-width: none;
+        min-width: 100%;
+        height: 400px;
+        left: 50%;
+        z-index: -2;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        -moz-transform: translate3d(-50%, 0, 0);
+        -ms-transform: translate3d(-50%, 0, 0);
+        -o-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    .plr-stp-bg {
+        position: absolute;
+        height: 150px;
+        width: 100%;
+        clip-path: inset(0 0 0 0);
+        clip: rect(auto auto auto auto);
+    }
+    
+    .plr-stp-bg-wrapper {
+        width: 100%;
+        height: 150px;
+        position: relative;
+    }
+    
+    .plr-stp-content {
+        position: relative;
+        width: 100%;
+        background-color: rgb(0, 166, 128);
+    }
+    
+    .plr-stp-sponsor {
+        color: white;
+        text-transform: capitalize;
+        font-size: 12px;
+        line-height: 14px;
+        width: 90%;
+        margin: 0 auto !important;
+        padding-bottom: 5px;
+    }
+    
+    .plr-stp-title {
+        color: white !important;
+        text-transform: capitalize;
+        position: relative;
+        font-size: 1em;
+        line-height: 1.2em;
+        font-weight: bold;
+        width: 90%;
+        margin: 0 auto !important;
+        padding: 5px 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="placeholder"></div>
+    </div>
+    <div class="article">
+        <div class="title">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        <div class="thumbnail">
+            <div class="placeholder"></div>
+        </div>
+        <div class="content">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <h5 class="title">Scroll to Parallax:</h5>
+            <div class="plr-stp-adWrapper">
+                <a href="https://www.tripadvisor.ca/Attractions-g60763-Activities-New_York_City_New_York.html">
+                    <div class="plr-stp-bg-wrapper">
+                        <div class="plr-stp-bg">
+                            <img class="plr-stp-bg-img" src="/assets/parallax1.jpeg" />
+                        </div>
+                    </div>
+                    <div class="plr-stp-content">
+                        <p class="plr-stp-title">10 Things to Do In New York City</p>
+                        <div class="plr-stp-sponsor">Sponsored by TripAdvisor</div>
+                    </div>
+                </a>
+            </div>
+            <script>
+
+            //resizes the ad
+            function dynamicallyOrientSTP() {
+                /*convert the height to pixels so that random resizing from browser
+                url bar movement does not change the size of the background, and cause
+                jerky effect*/
+                $(".plr-stp-adWrapper").width(window.innerWidth);
+
+                //adjust the left margin so that ad is centered and full width
+                var offsetLeft = $(".plr-stp-adWrapper").offset().left;
+
+                while (offsetLeft != 0) {
+                    left = parseInt($(".plr-stp-adWrapper").css("margin-left"), 10);
+                    if (offsetLeft > 0) {
+                        $(".plr-stp-adWrapper").css("margin-left", left - 1);
+                    } else {
+                        $(".plr-stp-adWrapper").css("margin-left", left + 1);
+                    }
+                    offsetLeft = $(".plr-stp-adWrapper").offset().left;
+                }
+
+                if (window.innerWidth != $(".plr-stp-adWrapper").width()) {
+                    dynamicallyOrientSTP();
+                }
+            }
+
+            function setTransformStyles(element, x, y, z) {
+                element.css("-webkit-transform", "translate3d(" + x + "," + y + "," + z + ")");
+                element.css("-moz-transform", "translate3d(" + x + "," + y + "," + z + ")");
+                element.css("-ms-transform", "translate3d(" + x + "," + y + "," + z + ")");
+                element.css("-o-transform", "translate3d(" + x + "," + y + "," + z + ")");
+                element.css("transform", "translate3d(" + x + "," + y + "," + z + ")");
+            }
+
+
+            /*----------  Run when ready  ----------*/
+
+            $(document).ready(function() {
+                dynamicallyOrientSTP();
+                //resize listener
+                var ratio = window.innerWidth / window.innerHeight;
+
+                scrollTop = $(window).scrollTop();
+                prevScrollTop = scrollTop;
+                fgOffsetTop = $(".plr-stp-adWrapper").offset().top;
+                fgHeight = $(".plr-stp-adWrapper").height();
+                bgOffsetTop = $(".plr-stp-bg-img").offset().top;
+                bgHeight = $(".plr-stp-bg-img").height();
+                bgElement = $(".plr-stp-bg-img");
+
+                range = window.innerHeight - bgHeight;
+                fgRange = window.innerHeight - fgHeight
+
+                $(window).on("resize", function(e) {
+                    dynamicallyOrientSTP();
+
+                    scrollTop = $(window).scrollTop();
+                    prevScrollTop = scrollTop;
+                    fgOffsetTop = $(".plr-stp-adWrapper").position().top;
+                    fgHeight = $(".plr-stp-adWrapper").height();
+                    bgOffsetTop = $(".plr-stp-bg-img").offset().top;
+                    bgHeight = $(".plr-stp-bg-img").height();
+                });
+
+                percent = 0;
+
+                function tick(time) {
+
+                    //we need to check if fgOffsetTop has changed
+                    //because as the other ads render, the top will be pushed down
+                    if ($(".plr-stp-adWrapper").offset().top != fgOffsetTop) {
+                        fgOffsetTop = $(".plr-stp-adWrapper").offset().top;
+                    }
+
+                    scrollTop = $(window).scrollTop();
+                    //if the ad is in view
+                    if (!(scrollTop + window.innerHeight < fgOffsetTop || scrollTop > fgOffsetTop + fgHeight)) {
+
+                        percent = fgOffsetTop - scrollTop;
+                        percent = percent / fgRange
+
+
+                        setTransformStyles(bgElement, "-50%", percent * range + "px", "0");
+
+                    } else {
+                        //console.log("not in range")
+                    }
+
+                    requestAnimationFrame(tick);
+                }
+
+                requestAnimationFrame(tick);
+            });
+            </script>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <h5 class="title">Full Page Parallax:</h5>
+            <div class="plr-sti-adWrapper">
+                <div class="plr-sti-header">SCROLL TO CONTINUE WITH CONTENT</div>
+                <div class="plr-sti-adContent">
+                    <div class="plr-sti-foregroundContent">
+                        <p class="plr-sti-title">The New iPhone Will Blow Your Mind</p>
+                        <a href="https://www.apple.com/iphone-7/" class="plr-sti-clickthrough">
+                            <div>Learn More</div>
+                        </a>
+                        <div class="plr-sti-sponsor">Sponsored by Apple</div>
+                    </div>
+                    <div class="plr-sti-adBackgroundContent"></div>
+                    <img class="plr-sti-adBackground-img" src="/assets/parallax2.jpg" />
+                </div>
+            </div>
+            <script>
+            /*----------  Helper Functions  ----------*/
+
+            //resizes the ad
+            function dynamicallyOrientAd(imageWidth, imageHeight) {
+                /*convert the height to pixels so that random resizing from browser
+                url bar movement does not change the size of the background, and cause
+                jerky effect*/
+                jQuery(".plr-sti-adWrapper").width(window.innerWidth);
+                jQuery(".plr-sti-adWrapper").height(window.innerHeight);
+
+
+                /*
+                this is a convoluted, fucked up way to scale the image to fit the screen
+                while using a constant pixel size (to prevent jankyness) instead of using vw, vh, or%
+                data.image.sourceWidth/sourceHeight is used because for some reason
+                the actual DOM object width and height of the image is 0 when onRender is called.
+                note that I cant simply set the width and height to that of the window, 
+                because that would destroy the ratio of the image.
+                also note that there is extra padding added to window.innerHeight because
+                chrome is a fucking asshole and their URL bar constantly changes the 
+                height of the window
+                */
+
+                widthRatio = window.innerWidth / imageWidth;
+                heightRatio = (window.innerHeight + 100) / imageHeight;
+
+                if (widthRatio > heightRatio) {
+                    jQuery(".plr-sti-adBackground-img").css("width", imageWidth * widthRatio);
+                    jQuery(".plr-sti-adBackground-img").css("height", imageHeight * widthRatio);
+                } else {
+                    jQuery(".plr-sti-adBackground-img").css("width", imageWidth * heightRatio);
+                    jQuery(".plr-sti-adBackground-img").css("height", imageHeight * heightRatio);
+                }
+
+
+                //adjust the left margin so that ad is centered and full width
+                var offsetLeft = jQuery(".plr-sti-adWrapper").offset().left;
+
+                while (offsetLeft != 0) {
+                    left = parseInt(jQuery(".plr-sti-adWrapper").css("margin-left"), 10);
+                    if (offsetLeft > 0) {
+                        jQuery(".plr-sti-adWrapper").css("margin-left", left - 1);
+                    } else {
+                        jQuery(".plr-sti-adWrapper").css("margin-left", left + 1);
+                    }
+                    offsetLeft = jQuery(".plr-sti-adWrapper").offset().left;
+                }
+
+                if (window.innerWidth != jQuery(".plr-sti-adWrapper").width()) {
+                    dynamicallyOrientAd(imageWidth, imageHeight);
+                }
+            }
+
+            /*----------  Run when ready  ----------*/
+
+            $(window).on('load', function() {
+                var img = $(".plr-sti-adBackground-img");
+                dynamicallyOrientAd(img.width(), img.height());
+
+                //fucking android and ios have different implementations of opacity & clip-path
+                //so different approaches need to be taken to darken the background
+                // #bleedingedge #whythefuck #fml
+                //modified from http://stackoverflow.com/questions/21741841/detecting-ios-android-operating-system
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+                // iOS detection from: http://stackoverflow.com/a/9039885/177710
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    jQuery(".plr-sti-adContent").css("background", "rgba(0,0,0,0.5)");
+                }
+                //android phones and whatever else
+                else {
+                    //same thing as background rgba(0,0,0,0.5) EXCEPT IT DOESNT FUCKING WORK
+                    //ON IOS FOR SOME REASON
+                    jQuery(".plr-sti-adBackground-img").css("opacity", "0.5");
+                    jQuery(".plr-sti-adContent").css("background", "black");
+                    //enables smooth scrolling on android phones
+                    jQuery(".plr-sti-adContent").css("clip-path", "inset(0 0 0 0)");
+                }
+
+                //resize listener
+                var ratio = window.innerWidth / window.innerHeight;
+
+                jQuery(window).on("resize", function(e) {
+                    var newRatio = window.innerWidth / window.innerHeight;
+                    if ((newRatio > 1 && ratio < 1) || (newRatio < 1 && ratio > 1)) {
+                        dynamicallyOrientAd(img.width(), img.height());
+                    }
+                });
+            });
+            </script>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <h5 class="title">Half Page Parallax:</h5>
+            <div class="plr-str-adWrapper">
+                <div class="plr-str-header">SCROLL TO CONTINUE WITH CONTENT</div>
+                <div class="plr-str-adContent">
+                    <div class="plr-str-foregroundContent">
+                        <p class="plr-str-title">How To Take Amazing Photos</p>
+                        <div class="plr-str-sponsor">Sponsored by Samsung</div>
+                        <a href="{{link}}" class="plr-str-clickthrough">
+                            <div>Tap to Read</div>
+                        </a>
+                    </div>
+                    <div class="plr-str-adBackgroundContent"></div>
+                    <img class="plr-str-adBackground-img" src="/assets/parallax3.jpeg" />
+                </div>
+            </div>
+            <script>
+
+            /*----------  helper function  ----------*/
+            //resizes the ad
+            function dynamicallyOrientSTR(imageWidth, imageHeight) {
+                /*convert the height to pixels so that random resizing from browser
+                url bar movement does not change the size of the background, and cause
+                jerky effect*/
+                jQuery(".plr-str-adWrapper").width(window.innerWidth);
+
+
+                /*
+                this is a convoluted, fucked up way to scale the image to fit the screen
+                while using a constant pixel size (to prevent jankyness) instead of using vw, vh, or%
+                data.image.sourceWidth/sourceHeight is used because for some reason
+                the actual DOM object width and height of the image is 0 when onRender is called.
+                note that I cant simply set the width and height to that of the window, 
+                because that would destroy the ratio of the image.
+                also note that there is extra padding added to window.innerHeight because
+                chrome is a fucking asshole and their URL bar constantly changes the 
+                height of the window
+                */
+
+                widthRatio = window.innerWidth / imageWidth;
+                heightRatio = (window.innerHeight + 100) / imageHeight;
+                if (widthRatio > heightRatio) {
+                    jQuery(".plr-str-adBackground-img").css("width", imageWidth * widthRatio);
+                    jQuery(".plr-str-adBackground-img").css("height", imageHeight * widthRatio);
+                } else {
+                    jQuery(".plr-str-adBackground-img").css("width", imageWidth * heightRatio);
+                    jQuery(".plr-str-adBackground-img").css("height", imageHeight * heightRatio);
+                }
+
+
+                //adjust the left margin so that ad is centered and full width
+                var offsetLeft = jQuery(".plr-str-adWrapper").offset().left;
+
+                while (offsetLeft != 0) {
+                    left = parseInt(jQuery(".plr-str-adWrapper").css("margin-left"), 10);
+                    if (offsetLeft > 0) {
+                        jQuery(".plr-str-adWrapper").css("margin-left", left - 1);
+                    } else {
+                        jQuery(".plr-str-adWrapper").css("margin-left", left + 1);
+                    }
+                    offsetLeft = jQuery(".plr-str-adWrapper").offset().left;
+                }
+
+                if (window.innerWidth != jQuery(".plr-str-adWrapper").width()) {
+                    dynamicallyOrientSTR(imageWidth, imageHeight);
+                }
+            }
+            /*----------  Run when ready  ----------*/
+            $(window).on('load', function() {
+                var img = $(".plr-str-adBackground-img");
+                dynamicallyOrientSTR(img.width(), img.height());
+
+                //fucking android and ios have different implementations of opacity & clip-path
+                //so different approaches need to be taken to darken the background
+                // #bleedingedge #whythefuck #fml
+                //modified from http://stackoverflow.com/questions/21741841/detecting-ios-android-operating-system
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+                // iOS detection from: http://stackoverflow.com/a/9039885/177710
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    jQuery(".plr-str-adContent").css("background", "rgba(0,0,0,0.5)");
+                }
+                //android phones and whatever else
+                else {
+                    //same thing as background rgba(0,0,0,0.5) EXCEPT IT DOESNT FUCKING WORK
+                    //ON IOS FOR SOME REASON
+                    jQuery(".plr-str-adBackground-img").css("opacity", "0.5");
+                    jQuery(".plr-str-adContent").css("background", "black");
+                    //enables smooth scrolling on android phones
+                    jQuery(".plr-str-adContent").css("clip-path", "inset(0 0 0 0)");
+                }
+
+
+                //resize listener
+                var ratio = window.innerWidth / window.innerHeight;
+
+                jQuery(window).on("resize", function(e) {
+                    var newRatio = window.innerWidth / window.innerHeight;
+                    if ((newRatio > 1 && ratio < 1) || (newRatio < 1 && ratio > 1)) {
+                        dynamicallyOrientSTR(img.width(), img.height());
+                    }
+                });
+
+            });
+            </script>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="footer">
+                <div class="suggestion">
+                    <div class="left">
+                        <div class="placeholder"></div>
+                    </div>
+                    <div class="right">
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                    </div>
+                </div>
+                <div class="suggestion">
+                    <div class="left">
+                        <div class="placeholder"></div>
+                    </div>
+                    <div class="right">
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                    </div>
+                </div>
+                <div class="suggestion">
+                    <div class="left">
+                        <div class="placeholder"></div>
+                    </div>
+                    <div class="right">
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

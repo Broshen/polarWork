@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,700');
+body {
+    font-family: "Raleway", sans-serif;
+    color: black;
+    text-align: center;
+    overflow-x: hidden;
+    background: white;
+    height: 100%;
+}
+
+.intro{
+	margin-bottom: 20px
+}
+
+.intro p{
+	width: 80%;
+	margin: auto; 
+}
+
+.row{
+	position: relative;
+}
+
+.left{
+	width: 30%;
+	position: relative;
+}
+
+.left *{
+	width: 100%;
+}
+
+.menu{
+    position: absolute;
+}
+
+.menu_option{
+	height: 60px;
+	margin: auto;
+	position: relative;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.menu_option:hover{
+	background-color: #eeeeee;
+}
+
+.menu_option.active{
+	background-color: #dddddd;
+}
+
+.menu_title{
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+	width: 80%;
+    position: absolute;
+    text-align: left;
+}
+
+.right{
+	height: 100%;
+	width: 70%;
+	background: black;
+	position: relative;
+}
+
+#phone_template{
+	height: calc(100vh - 20px);
+}
+#screen{
+	position: absolute;
+	overflow: auto;
+	border: none;
+}
+#screen_bg{
+	background: white;
+	position: absolute;
+}

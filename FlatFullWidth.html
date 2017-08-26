@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="demo.css">
+    <style>
+	    .plr-flat1 {
+	        height: 200px;
+	        width: 100%;
+	        position: relative;
+	    }
+	    
+	    .plr-flat1 .plr-flat-content {
+	        width: 100%;
+	        height: 100%;
+	        position: absolute;
+	        background-position: center !important;
+	        background-size: cover !important;
+	        background-repeat: no-repeat !important;
+	        color: white;
+	    }
+	    
+	    .plr-flat1 .plr-flat-title {
+	        position: absolute;
+	        top: 30px;
+	        left: 50%;
+	        transform: translate3d(-50%, 0, 0);
+	        width: 80%;
+	        text-align: center;
+	        font-weight: bolder;
+	        font-size: 30px;
+	    }
+	    
+	    .plr-flat1 .plr-flat-sponsor {
+	        bottom: 5px;
+	        right: 20px;
+	        position: absolute;
+	        font-size: 12px;
+	        text-transform: uppercase;
+	    }
+	    
+	    .plr-flat2 {
+	        width: 100%;
+	        height: 200px;
+	        position: relative;
+	    }
+	    
+	    .plr-flat2 .plr-flat-img {
+	        width: 100%;
+	        height: 150px;
+	        position: relative;
+	        background-position: center !important;
+	        background-size: cover !important;
+	        background-repeat: no-repeat !important;
+	    }
+	    
+	    .plr-flat2 .plr-flat-content {
+	        background: rgb(0, 195, 195);
+	        position: absolute;
+	        bottom: 0;
+	        width: 100%;
+	        color: white;
+	    }
+	    
+	    .plr-flat2 .plr-flat-title {
+	        display: block;
+	        margin: 5px 20px;
+	        font-size: 125%;
+	        overflow: hidden;
+	    }
+	    
+	    .plr-flat2 .plr-flat-sponsor {
+	        position: relative;
+	        left: 20px;
+	        bottom: 5px;
+	        font-size: 12px;
+	        font-weight: bold;
+	        line-height: 15px;
+	    }
+	    
+	    .plr-flat3 {
+	        position: relative;
+	        width: 100%;
+	        height: 250px;
+	        border-top: 1px solid lightgray;
+	        margin-top: 15px;
+	        margin-bottom: 15px;
+	    }
+	    
+	    .plr-flat3 a {
+	        text-decoration: none;
+	        color: black;
+	    }
+	    
+	    .plr-flat3 .plr-flat-img {
+	        position: absolute;
+	        width: 100%;
+	        height: 155px;
+	        bottom: 0%;
+	        border-top: 6px solid rgb(204, 0, 0);
+	    }
+	    
+	    .plr-flat3 .plr-flat-title {
+	        font-size: 24px;
+	        line-height: 27px;
+	        overflow: hidden;
+	        text-align: center;
+	        margin: 0 auto;
+	        position: relative;
+	        top: 15px;
+	        width: 85%;
+	        font-weight: 600;
+	    }
+	    
+	    .plr-flat3 .plr-flat-sponsor {
+	        position: absolute;
+	        text-transform: uppercase;
+	        color: white;
+	        background-color: rgb(204, 0, 0);
+	        padding: 0 10px;
+	        font-size: 10px;
+	        line-height: 10px;
+	        top: -12%;
+	        left: 50%;
+	        transform: translateX(-50%);
+	        letter-spacing: 2px;
+	        z-index: 1;
+	        text-align: center;
+	        font-weight: 300;
+	        border-radius: 40px;
+	    }
+	    
+	    @import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
+	    .plr-ad {
+	        width: 100%;
+	        text-align: center;
+	        font-family: 'Roboto', sans-serif;
+	        font-weight: 300;
+	        border-top: solid 1px #c0c3c4;
+	    }
+	    
+	    .plr-ad-top {
+	        display: -webkit-box;
+	        -webkit-line-clamp: 2;
+	        -webkit-box-orient: vertical;
+	        overflow: hidden;
+	    }
+	    
+	    .plr-ad h1 {
+	        font-size: 18px;
+	        line-height: 1.3;
+	        letter-spacing: 0.04em;
+	        color: #3b3e3f;
+	        margin: 10px auto;
+	    }
+	    
+	    .plr-ad a {
+	        text-decoration: none;
+	        color: rgb(255, 102, 0);
+	    }
+	    
+	    .plr-ad a:hover {
+	        text-decoration: none;
+	        color: rgb(255, 190, 0);
+	    }
+	    
+	    .plr-ad a:visited {
+	        text-decoration: none;
+	        color: rgb(255, 102, 0) !important;
+	    }
+	    
+	    .plr-ad-thumb img {
+	        width: 100%;
+	        height: auto;
+	    }
+	    
+	    .plr-ad-thumb {
+	        max-height: 125px;
+	        overflow: hidden;
+	    }
+	    
+	    .plr-sponsor {
+	        display: inline-block;
+	        left: 50%;
+	        position: absolute;
+	        background: white;
+	        padding: 0px 20px 7px;
+	        transform: translateX(-50%);
+	        font-family: 'Roboto', sans-serif;
+	        font-size: 12px;
+	        letter-spacing: 0.15em;
+	        font-weight: 700;
+	        text-transform: uppercase;
+	        color: rgb(255, 102, 0);
+	        min-width: 200px;
+	        max-width: 100%;
+	    }
+	    
+	    .plr-sponsor img {
+	        max-width: 100px;
+	        height: 16px;
+	        bottom: -3px;
+	        position: relative;
+	    }
+	    
+	    .plr-summary {
+	        display: -webkit-box;
+	        -webkit-line-clamp: 2;
+	        -webkit-box-orient: vertical;
+	        overflow: hidden;
+	        margin: 10px;
+	    }
+	    
+	    .plr-read-more {
+	        border: solid 2px rgb(255, 102, 0);
+	        display: inline-block;
+	        padding: 5px 10px;
+	        text-transform: uppercase;
+	    }
+	    
+	    .plr-ad-bottom {
+	        padding-bottom: 10px;
+	        border-bottom: solid 1px #c0c3c4;
+	    }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="placeholder"></div>
+    </div>
+    <div class="article">
+        <div class="title">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        <div class="thumbnail">
+            <div class="placeholder"></div>
+        </div>
+        <div class="content">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="plr-flat1">
+                <a href="https://www.usatoday.com/story/tech/columnist/saltzman/2016/06/04/top-tips-taking-better-smartphone-photos/85341460/">
+                    <div class="plr-flat-content" 
+                    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/assets/creative1.jpeg)">
+                        <div class="plr-flat-title">How to Take Amazing Photos</div>
+                        <div class="plr-flat-sponsor"> Presented by Samsung</div>
+                    </div>
+                </a>
+            </div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="plr-flat2">
+                <div class="plr-flat-img" style="background: url(/assets/creative1.jpeg)">
+                </div>
+                <a href="https://www.usatoday.com/story/tech/columnist/saltzman/2016/06/04/top-tips-taking-better-smartphone-photos/85341460/">
+                    <div class="plr-flat-content">
+                        <div class="plr-flat-title">How to Take Amazing Photos
+                        </div>
+                        <div class="plr-flat-sponsor"> Presented by Samsung</div>
+                    </div>
+                </a>
+            </div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="plr-flat3">
+                <a href="https://www.usatoday.com/story/tech/columnist/saltzman/2016/06/04/top-tips-taking-better-smartphone-photos/85341460/">
+                    <div class="plr-flat-title">
+                        How to Take Amazing Photos
+                    </div>
+                    <div class="plr-flat-img" style="background: url(/assets/creative1.jpeg) no-repeat center center/cover;">
+                        <div class="plr-flat-sponsor">
+                            <p>Presented By Samsung</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="mediavoice-native-ad">
+                <!-- Code -->
+                <div class="plr-ad">
+                    <div class="plr-ad-top">
+                        <h1>How to Take Amazing Photos</h1>
+                    </div>
+                    <div class="plr-sponsor">
+                        <a href="https://www.usatoday.com/story/tech/columnist/saltzman/2016/06/04/top-tips-taking-better-smartphone-photos/85341460/" rel="nofollow" target="_top">
+      Sponsored by Samsung
+    </a>
+                    </div>
+                    <div class="plr-ad-thumb">
+                        <img src="/assets/creative1.jpeg" style="display:block !important;">
+                    </div>
+                    <div class="plr-ad-bottom">
+                        <div class="plr-summary">The best camera, as they say, is the one you have with you.</div>
+                        <div class="plr-read-more">
+                            <a href="https://www.usatoday.com/story/tech/columnist/saltzman/2016/06/04/top-tips-taking-better-smartphone-photos/85341460/" rel="nofollow" target="_top"></a>Read more
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="suggestion">
+                <div class="left">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+            <div class="suggestion">
+                <div class="left">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+            <div class="suggestion">
+                <div class="left">
+                    <div class="placeholder"></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
