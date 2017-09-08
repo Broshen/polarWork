@@ -15,7 +15,7 @@ function loadDemo(element, filename){
 	$("#screen").attr("src", filename);
 }
 
-$(document).ready(function(){
+$(window).on("load", function(){
 	iframe = $("#screen");
 	phone = $("#phone_template");
 	bg = $("#screen_bg");

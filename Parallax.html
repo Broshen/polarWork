@@ -346,10 +346,6 @@
                     }
                     offsetLeft = $(".plr-stp-adWrapper").offset().left;
                 }
-
-                if (window.innerWidth != $(".plr-stp-adWrapper").width()) {
-                    dynamicallyOrientSTP();
-                }
             }
 
             function setTransformStyles(element, x, y, z) {
@@ -363,7 +359,7 @@
 
             /*----------  Run when ready  ----------*/
 
-            $(document).ready(function() {
+            $(window).on("load", function() {
                 dynamicallyOrientSTP();
                 //resize listener
                 var ratio = window.innerWidth / window.innerHeight;
@@ -405,10 +401,9 @@
                     if (!(scrollTop + window.innerHeight < fgOffsetTop || scrollTop > fgOffsetTop + fgHeight)) {
 
                         percent = fgOffsetTop - scrollTop;
-                        percent = percent / fgRange
+                        percent = percent / fgRange;
 
-
-                        setTransformStyles(bgElement, "-50%", percent * range + "px", "0");
+                        setTransformStyles(bgElement, "-50%", percent * range / 10 + "px", "0");
 
                     } else {
                         //console.log("not in range")
@@ -497,10 +492,6 @@
                         jQuery(".plr-sti-adWrapper").css("margin-left", left + 1);
                     }
                     offsetLeft = jQuery(".plr-sti-adWrapper").offset().left;
-                }
-
-                if (window.innerWidth != jQuery(".plr-sti-adWrapper").width()) {
-                    dynamicallyOrientAd(imageWidth, imageHeight);
                 }
             }
 
@@ -616,10 +607,6 @@
                         jQuery(".plr-str-adWrapper").css("margin-left", left + 1);
                     }
                     offsetLeft = jQuery(".plr-str-adWrapper").offset().left;
-                }
-
-                if (window.innerWidth != jQuery(".plr-str-adWrapper").width()) {
-                    dynamicallyOrientSTR(imageWidth, imageHeight);
                 }
             }
             /*----------  Run when ready  ----------*/
